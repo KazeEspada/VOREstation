@@ -70,7 +70,7 @@
 	set name = "Choose Vore Mode"
 	set category = "Vore"
 
-	var/type = input("Choose Vore Mode") in list("Oral Vore", "Unbirth", "Anal Vore", "Cock Vore", "Breast Vore")
+	var/type = input("Choose Vore Mode") in list("Oral Vore", "Unbirth", "Anal Vore", "Cock Vore", "Breast Vore","Urethral Vore")
 	// This is hard coded for now, but should be fixed later!
 	vorifice = SINGLETON_VORETYPE_INSTANCES[type];
 
@@ -83,7 +83,7 @@
 /mob/living/carbon/human/proc/vore_release()
 	set name = "Release"
 	set category = "Vore"
-	var/releaseorifice = input("Choose Orifice") in list("Stomach (by Mouth)", "Stomach (by Anus)", "Womb", "Cock", "Breasts")
+	var/releaseorifice = input("Choose Orifice") in list("Stomach (by Mouth)", "Stomach (by Anus)", "Womb", "Cock", "Breasts","Bladder")
 
 	// TODO LESHANA - This should all be refactored into procs on voretype that are overriden...
 	switch(releaseorifice)
@@ -127,6 +127,15 @@
 			else if(belly.is_full)
 				belly.is_full = 0
 				visible_message("<span class='danger'>[src] squirts out a puddle of milk from their breasts!</span>")
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+		if("Bladder")
+			var/datum/belly/belly = internal_contents["Urethra"]
+			if (belly.release_all_contents())
+				visible_message("<font color='green'><b>[src] squirts out the contents of their bladder!</b></font>")
+				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
+			else if(belly.is_full)
+				belly.is_full = 0
+				visible_message("<span class='danger'>[src] squirts out a puddle of piss from their urethra!</span>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 /////////////////////////////
