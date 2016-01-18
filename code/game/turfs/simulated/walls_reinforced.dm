@@ -6,7 +6,7 @@
 	density = 1
 
 	damage_cap = 800
-	max_temperature = 6000
+	max_temperature = INFINITY
 
 	walltype = "rwall"
 
