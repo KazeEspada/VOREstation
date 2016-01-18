@@ -133,10 +133,6 @@
 			if (belly.release_all_contents())
 				visible_message("<font color='green'><b>[src] squirts out the contents of their bladder!</b></font>")
 				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-			else if(belly.is_full)
-				belly.is_full = 0
-				visible_message("<span class='danger'>[src] squirts out a puddle of piss from their urethra!</span>")
-				playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 /////////////////////////////
 ////   OOC Escape Code	 ////
